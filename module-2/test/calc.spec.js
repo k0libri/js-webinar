@@ -18,4 +18,108 @@ describe.only('calc', () => {
      */
     // TODO: write test cases to test the calculator
 
+    it("should have a proper value", () => {
+        const c = calc(3);
+        expect(c).not.to.be.undefined;
+        expect(c.v).to.equal(3);
+    });
+
+    describe("add", () => {
+        it("should exist add", () => {
+            const c = calc(3);
+            expect(c.add).not.to.be.undefined;
+        });
+
+        it("should be able to add a number to the current value", () => {
+            // GIVEN
+            const c = calc(3);
+            // WHEN
+            const result = c.add(5).v;
+            // THEN
+            expect(result).to.equal(8);
+        });
+    });
+
+    describe("minus", () => {
+        it("should exist minus", () => {
+            const c = calc(3);
+            expect(c.minus).not.to.be.undefined;
+        });
+
+        it("should be able to subtract a number from the current value", () => {
+            const c = calc(3);
+            const result = c.minus(2).v;
+            expect(result).to.equal(1);
+        });
+    });
+
+    describe("square", () => {
+        it("should exist square", () => {
+            const c = calc(3);
+            expect(c.sqrt).not.to.be.undefined;
+        });
+
+        it("should be able to get the square root of the current value", () => {
+            const c = calc(4);
+            const result = c.sqrt(2).v;
+            expect(result).to.be.equal(2);
+        });
+
+        it("should handle square root with negative number", () => {
+            const c = calc(-3);
+            expect(() => c.sqrt()).to.throw("Square root of a negative value cannot be determined!");
+        });
+    });
+
+    describe("times", () => {
+        it("should exist times", () => {
+            const c = calc(3);
+            expect(c.times).not.to.be.undefined;
+        });
+
+        it("should be able to multiply the current value with the given number", () => {
+            const c = calc(3);
+            const result = c.times(10).v;
+            expect(result).to.be.equal(30);
+        });
+    });
+
+    describe("divide", () => {
+        it("should exist divide", () => {
+            const c = calc(3);
+            expect(c.divide).not.to.be.undefined;
+        });
+
+        it("should be able to divide the current value with the given number", () => {
+            const c = calc(10);
+            const result = c.divide(2).v;
+            expect(result).to.be.equal(5);
+        });
+
+        it("should handle division by 0", () => {
+            const c = calc(5);
+            expect(() => c.divide(0)).to.throw("Division by 0 is not possible!");
+        });
+    });
+
+    describe("modulo", () => {
+        it("should exist modulo", () => {
+            const c = calc(3);
+            expect(c.modulo).not.to.be.undefined;
+        });
+
+        it("should be able to get the modulo by dividing the current number with the given number", () => {
+            const c = calc(10);
+            const result = c.modulo(5).v;
+            expect(result).to.be.equal(0);
+        });
+    });
+
+    describe("complexExpression", () => {
+        it("should be able to calculate the given more complex expression", () => {
+            const c = calc(3);
+            const result = c.add(4).minus(3).times(6).v;
+            expect(result).to.be.equal(24);
+        });
+    });
 });
