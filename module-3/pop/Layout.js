@@ -1,3 +1,4 @@
+const Element = require("./Element")
 /**
  * Create Layout class, which represents a page of
  * the application, and
@@ -14,4 +15,20 @@
  * 7. It has a method to load the page, i.e. Navigates to
  *    the URL of it (.load())
  */
-module.exports = class Layout {}
+class Layout extends Element {
+    constructor(name, url, locator) {
+        super(name, locator)
+        this.url = url;
+    }
+
+    setParent() {
+        throw new Error("Layout cannot have a parent!")
+    }
+
+    load() {
+        return browser.get(this.url);
+    }
+}
+
+
+module.exports = Layout;
