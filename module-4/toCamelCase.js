@@ -11,7 +11,7 @@ const toCamelCase = (toConvert) => {
         return "";
     }
 
-    toConvert = toConvert.match(/\b\w+\b/g);
+    toConvert = toConvert.match(/\w+/g);
     let firstWord = toConvert[0].toLowerCase();
     let otherWords = toConvert.splice(1);
 
