@@ -15,9 +15,7 @@ const toCamelCase = (toConvert) => {
     let firstWord = toConvert[0].toLowerCase();
     let otherWords = toConvert.splice(1);
 
-    let result = firstWord.concat(otherWords.map((word) => {
-        return word[0].toUpperCase() + word.substring(1).toLowerCase();
-        }).join(""));
+    let result = firstWord.concat(otherWords.map(word => word[0].toUpperCase() + word.substring(1).toLowerCase()).join(""));
 
     return result;
 }
