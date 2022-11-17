@@ -1,4 +1,4 @@
-const restrictedCharRegex = /[^ivxlcdm]/;
+const isRestrictedRomanCharRegex = /[^ivxlcdm]/;
 const romanNumbers = {
     i: 1,
     v: 5,
@@ -22,7 +22,7 @@ const romanNumbers = {
 function romanToDec(roman) {
     if (typeof roman !== "string") {
         console.warn('Not a string');
-    } else if (restrictedCharRegex.test(roman) === true) {
+    } else if (isRestrictedRomanCharRegex.test(roman) === true) {
         console.warn('Not a valid roman number');
         return false;
     } else {
