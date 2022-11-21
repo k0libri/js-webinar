@@ -6,3 +6,19 @@
  * @param {string[]} strings
  * @returns {string} longest string or empty string in other cases
  */
+
+function longestString(strings) {
+    if (Array.isArray(strings)) {
+        const onlyStringArray = strings.filter(e => typeof e === 'string');
+        if (onlyStringArray.length > 0) {
+            const sortedFirst = onlyStringArray.sort()[0];
+            return sortedFirst;
+        } else {
+            return "";
+        }
+    } else {
+        return "";
+    }
+}
+
+module.exports = longestString;
