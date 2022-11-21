@@ -15,13 +15,12 @@ function catalanNumber(n) {
     } else if (n === 0 || n === 1) {
         return 1;
     } else {
-        // let sum = 0;
-        // for (let i = 0; i < n; i++) {
-        //     sum += catalanNumber(i) * catalanNumber(n - i -1)
-        //     console.log("SUM: ", sum);
-        // }
-        // return sum;
-         return factorial(2 * n) / (factorial(n + 1) * factorial(n));
+        let sum = 1;
+        for (let k = 2; k <= n; k++) {
+            sum *= (n + k) / k;
+        }
+        return Math.ceil(sum);
+        // return factorial(2 * n) / (factorial(n + 1) * factorial(n));
     }
 
 }

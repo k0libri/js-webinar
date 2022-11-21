@@ -22,7 +22,9 @@ const romanNumbers = {
 function romanToDec(roman) {
     if (typeof roman !== "string") {
         console.warn('Not a string');
-    } else if (isRestrictedRomanCharRegex.test(roman) === true) {
+        return false;
+    } 
+    if (isRestrictedRomanCharRegex.test(roman)) {
         console.warn('Not a valid roman number');
         return false;
     } else {
@@ -31,8 +33,8 @@ function romanToDec(roman) {
         let nextValue;
 
         for (let i = 0; i <= roman.length; i++) {
-            currentValue = romanNumbers[`${roman.charAt(i)}`];
-            nextValue = romanNumbers[`${roman.charAt(i + 1)}`];
+            currentValue = romanNumbers[roman.charAt(i)];
+            nextValue = romanNumbers[roman.charAt(i + 1)];
 
             if (currentValue >= nextValue) {
                 sum += currentValue;
